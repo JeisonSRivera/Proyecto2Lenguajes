@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VentasJHJ.Model.Domain
 {
-    class ProductoCliente
+    public class ProductoCliente
     {
         private float impuesto;
         private int cantidad;
@@ -12,6 +12,7 @@ namespace VentasJHJ.Model.Domain
         private float precioUnitario;
         private float precioSubtotal;
         private List<Producto> productos;
+        private Cliente cliente;
 
         public ProductoCliente()
         {
@@ -23,6 +24,7 @@ namespace VentasJHJ.Model.Domain
         public float Descuento { get => descuento; set => descuento = value; }
         public float PrecioUnitario { get => precioUnitario; set => precioUnitario = value; }
         public float PrecioSubtotal { get => precioSubtotal; set => precioSubtotal = value; }
-        public List<Producto> Productos1 { get => productos; set => productos = value; }
+        public List<Producto> Productos { get => productos; set => productos = value; }
+        public Cliente Cliente { get => cliente; set => cliente = value; }
     }
 }

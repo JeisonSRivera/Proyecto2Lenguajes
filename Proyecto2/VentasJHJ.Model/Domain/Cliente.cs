@@ -11,34 +11,33 @@ namespace VentasJHJ.Model.Domain
         private String apellidosCliente;
         private String cedulaCliente;
         private String emailCliente;
-        private String passwordCliente;
         private String direccionCliente;
         private String telefonoCliente;
+        List<PosOrden> ordenes;
 
         public Cliente()
         {
+            this.ordenes = new List<PosOrden>();
         }
 
         public Cliente(string nombreCliente, string apellidosCliente, string cedulaCliente, string emailCliente, 
-            string passwordCliente, string direccionCliente, string telefonoCliente)
+             string direccionCliente, string telefonoCliente)
         {
             this.nombreCliente = nombreCliente;
             this.apellidosCliente = apellidosCliente;
             this.cedulaCliente = cedulaCliente;
             this.emailCliente = emailCliente;
-            this.passwordCliente = passwordCliente;
             this.direccionCliente = direccionCliente;
             this.telefonoCliente = telefonoCliente;
         }
 
-        public Cliente(int idCliente, string nombreCliente, string apellidosCliente, string cedulaCliente, string emailCliente, string passwordCliente, string direccionCliente, string telefonoCliente)
+        public Cliente(int idCliente, string nombreCliente, string apellidosCliente, string cedulaCliente, string emailCliente, string direccionCliente, string telefonoCliente)
         {
             this.idCliente = idCliente;
             this.nombreCliente = nombreCliente;
             this.apellidosCliente = apellidosCliente;
             this.cedulaCliente = cedulaCliente;
             this.emailCliente = emailCliente;
-            this.passwordCliente = passwordCliente;
             this.direccionCliente = direccionCliente;
             this.telefonoCliente = telefonoCliente;
         }
@@ -48,8 +47,8 @@ namespace VentasJHJ.Model.Domain
         public string ApellidosCliente { get => apellidosCliente; set => apellidosCliente = value; }
         public string CedulaCliente { get => cedulaCliente; set => cedulaCliente = value; }
         public string EmailCliente { get => emailCliente; set => emailCliente = value; }
-        public string PasswordCliente { get => passwordCliente; set => passwordCliente = value; }
         public string DireccionCliente { get => direccionCliente; set => direccionCliente = value; }
         public string TelefonoCliente { get => telefonoCliente; set => telefonoCliente = value; }
+        public List<PosOrden> Ordenes { get => ordenes; set => ordenes = value; }
     }
 }
