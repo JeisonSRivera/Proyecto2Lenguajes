@@ -28,8 +28,8 @@ namespace VentasJHJ.API.Controllers
             return clienteData.GetAll();
         }
 
-        [HttpPost("{cliente}")]
-        public void Insert(Cliente cliente)
+        [HttpPost()]
+        public void Insert([FromBody] Cliente cliente)
         {
             ClienteData clienteData =
                  new ClienteData(configuration.GetConnectionString("VideoContext").ToString());

@@ -11,7 +11,8 @@ namespace VentasJHJ.Model.Domain
         private string fechaEnvio;
         private float valorTotal;
         private float valorEnvio;
-        private DetalleOrden detalleOrden;
+        private List<DetalleOrden> detallesOrden;
+        private Cliente cliente;
 
         public Orden()
         {

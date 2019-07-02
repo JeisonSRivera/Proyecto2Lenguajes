@@ -14,11 +14,9 @@ namespace VentasJHJ.Model.Domain
         private String passwordCliente;
         private String direccionCliente;
         private String telefonoCliente;
-        List<Orden> ordenes;
 
         public Cliente()
         {
-            this.ordenes = new List<Orden>();
         }
 
         public Cliente(string nombreCliente, string apellidosCliente, string cedulaCliente, string emailCliente, 
@@ -53,6 +51,5 @@ namespace VentasJHJ.Model.Domain
         public string PasswordCliente { get => passwordCliente; set => passwordCliente = value; }
         public string DireccionCliente { get => direccionCliente; set => direccionCliente = value; }
         public string TelefonoCliente { get => telefonoCliente; set => telefonoCliente = value; }
-        public List<Orden> Ordenes { get => ordenes; set => ordenes = value; }
     }
 }
