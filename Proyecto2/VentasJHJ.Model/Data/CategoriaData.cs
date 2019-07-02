@@ -75,5 +75,7 @@ namespace VentasJHJ.Model.Data
             }
             return categorias;
         }
+
+        
     }
 }
