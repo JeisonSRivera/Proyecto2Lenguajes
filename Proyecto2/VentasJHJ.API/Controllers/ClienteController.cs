@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using VentasJHJ.Model.Business;
 using VentasJHJ.Model.Data;
 using VentasJHJ.Model.Domain;
 
@@ -15,6 +16,7 @@ namespace VentasJHJ.API.Controllers
     public class GeneroController : Controller
     {
         private readonly IConfiguration configuration;
+        ClienteBusiness clienteBusiness;
         public GeneroController(IConfiguration configuration)
         {
             this.configuration = configuration;
@@ -23,41 +25,36 @@ namespace VentasJHJ.API.Controllers
         [HttpGet]
         public IEnumerable<Cliente> Get()
         {
-            ClienteData clienteData =
-                new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
-            return clienteData.GetAll();
+          clienteBusiness =new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
+            return clienteBusiness.GetAll();
         }
 
         [HttpPost()]
         public void Insert([FromBody] Cliente cliente)
         {
-            ClienteData clienteData =
-                 new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
-                 clienteData.Insertar(cliente);
+            clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
+            clienteBusiness.Insertar(cliente);
         }
 
         [HttpPost("{cliente}")]
         public void Update(Cliente cliente)
         {
-            ClienteData clienteData =
-                 new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
-            clienteData.Editar(cliente);
+            clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
+            clienteBusiness.Editar(cliente);
         }
 
-        [HttpPost("{id}")]
+        [HttpGet("{id}",Name= "Delete")]
         public void Delete(int id)
         {
-            ClienteData clienteData =
-                 new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
-            clienteData.Eliminar(id);
+            clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
+            clienteBusiness.Eliminar(id);
         }
 
         [HttpGet("{idCliente}", Name = "GetById")]
         public IEnumerable<Cliente> GetById(int id)
         {
-            ClienteData clienteData =
-                new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
-            return clienteData.GetById(id);
+            clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
+            return clienteBusiness.GetById(id);
         }
     }
     

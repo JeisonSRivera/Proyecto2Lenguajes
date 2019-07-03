@@ -21,5 +21,21 @@ namespace VentasJHJ.Model.Business
         {
             clienteData.Insertar(c);
         }
+        public void Eliminar(int id)
+        {
+            clienteData.Eliminar(id);
+        }
+        public void Editar(Cliente c)
+        {
+            clienteData.Editar(c);
+        }
+        public List<Cliente> GetAll()
+        {
+            return clienteData.GetAll();
+        }
+        public List<Cliente> GetById(int id)
+        {
+            return clienteData.GetById(id);
+        }
     }
 }
