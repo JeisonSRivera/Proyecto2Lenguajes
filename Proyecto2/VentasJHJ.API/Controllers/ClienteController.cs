@@ -51,6 +51,14 @@ namespace VentasJHJ.API.Controllers
                  new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
             clienteData.Eliminar(id);
         }
+
+        [HttpGet("{idCliente}", Name = "GetById")]
+        public IEnumerable<Cliente> GetById(int id)
+        {
+            ClienteData clienteData =
+                new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
+            return clienteData.GetById(id);
+        }
     }
     
 }
