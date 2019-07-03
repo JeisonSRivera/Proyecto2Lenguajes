@@ -159,10 +159,10 @@ namespace VentasJHJ.Model.Data
             return clientes;
         }
 
-        public List<Cliente> GetByName(String nombre)
+        public List<Cliente> GetById(int idCliente)
         {
             String sqlSelect = "Select id_cliente,nombre_cliente,apellidos_cliente,cedula_cliente, email_cliente,direccion_cliente, telefono_cliente " +
-                "from Cliente where nombre_cliente like '%"+nombre+"%'";
+                "from Cliente where id_cliente like '%" + idCliente + "%'";
 
             SqlDataAdapter daClientes = new SqlDataAdapter(sqlSelect, new SqlConnection(connectionString));
             DataSet dsCliente = new DataSet();
