@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using VentasJHJ.Model.Domain;
 
@@ -108,9 +109,6 @@ namespace VentasJHJ.Model.Data
             cmdCliente.Parameters.Add(new SqlParameter("email_cliente", cliente.EmailCliente));
             cmdCliente.Parameters.Add(new SqlParameter("direccion_cliente", cliente.DireccionCliente));
             cmdCliente.Parameters.Add(new SqlParameter("telefono_cliente", cliente.TelefonoCliente));
-            //SqlParameter parIdCliente = new SqlParameter("id_cliente", System.Data.SqlDbType.Int);
-            //parIdCliente.Direction = System.Data.ParameterDirection.Output;
-            //cmdCliente.Parameters.Add(parIdCliente);
 
             SqlConnection connection = new SqlConnection(connectionString);
             SqlTransaction transaction = null;
@@ -121,7 +119,6 @@ namespace VentasJHJ.Model.Data
                 cmdCliente.Connection = connection;
                 cmdCliente.Transaction = transaction;
                 cmdCliente.ExecuteNonQuery();
-                //cliente.IdCliente = Int32.Parse(cmdCliente.Parameters["id_cliente"].Value.ToString());
                 transaction.Commit();
             }
             catch (SqlException ex)
@@ -161,10 +158,35 @@ namespace VentasJHJ.Model.Data
             }
             return clientes;
         }
+
+        public List<Cliente> GetByName(String nombre)
+        {
+            String sqlSelect = "Select id_cliente,nombre_cliente,apellidos_cliente,cedula_cliente, email_cliente,direccion_cliente, telefono_cliente " +
+                "from Cliente where nombre_cliente like '%"+nombre+"%'";
+
+            SqlDataAdapter daClientes = new SqlDataAdapter(sqlSelect, new SqlConnection(connectionString));
+            DataSet dsCliente = new DataSet();
+            daClientes.Fill(dsCliente, "Cliente");
+
+            Dictionary<Int32, Cliente> dictionary = new Dictionary<Int32, Cliente>();
+            Cliente cliente = null;
+            foreach (DataRow row in dsCliente.Tables["Cliente"].Rows)
+            {
+                Int32 id = Int32.Parse(row["id_cliente"].ToString());
+               // if (dictionary.ContainsKey(id) == false)
+               // {
+                    cliente = new Cliente();
+                    cliente.IdCliente = id;
+                    cliente.NombreCliente = row["nombre_cliente"].ToString();
+                    cliente.ApellidosCliente = row["apellidos_cliente"].ToString();
+                    cliente.CedulaCliente = row["cedula_cliente"].ToString();
+                    cliente.TelefonoCliente = row["telefono_cliente"].ToString();
+                    cliente.EmailCliente = row["email_cliente"].ToString();
+                    cliente.DireccionCliente = row["direccion_cliente"].ToString();
+                    dictionary.Add(id, cliente);
+               // } // if
+            } // foreach
+            return dictionary.Values.ToList<Cliente>();
+        } // GetAllMovies
     }
-
 }
-
-
-
-

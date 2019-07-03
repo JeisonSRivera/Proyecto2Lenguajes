@@ -18,6 +18,16 @@ namespace VentasJHJ.Model.Domain
             this.Categoria = new Categoria();
         }
 
+        public Producto(int idProducto, string nombreProducto, string descripcion, int cantidadEnStock, float precio, Categoria categoria)
+        {
+            this.idProducto = idProducto;
+            this.nombreProducto = nombreProducto;
+            this.descripcion = descripcion;
+            this.cantidadEnStock = cantidadEnStock;
+            this.precio = precio;
+            this.categoria = categoria;
+        }
+
         public int IdProducto { get => idProducto; set => idProducto = value; }
         public string NombreProducto { get => nombreProducto; set => nombreProducto = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }

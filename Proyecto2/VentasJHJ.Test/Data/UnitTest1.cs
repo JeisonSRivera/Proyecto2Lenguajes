@@ -126,34 +126,15 @@ namespace VentasJHJ.Test.Data
         //    detalleOrden.Impuesto = 13;
         //    orden.DetalleOrden = detalleOrden;
         //    ordenData.Insertar(orden);
-
-
-
         //}
 
         [TestMethod]
-        public void TestProductoInsert()
+        public void TestFindByName()
         {
-            Producto producto = new Producto();
-            producto.IdProducto = 4;
-            List<Producto> productos = new List<Producto>();
-            productos.Add(producto);
-            ProductoCliente productoCliente = new ProductoCliente();
-            OrdenData ordenData = new OrdenData(connectionString);
-            productoCliente.Impuesto = 13;
-            productoCliente.PrecioSubtotal = 3000;
-            productoCliente.Cantidad = 1;
-            productoCliente.PrecioUnitario = 2500;
-            productoCliente.Descuento = 0;
-            Cliente cliente = new Cliente();
-            cliente.IdCliente = 10;
-            productoCliente.Cliente = cliente;
-            productoCliente.Productos = productos;
-            ordenData.InsertarProductoCliente(productoCliente);
-
-
-
-
+            List<Cliente> cliente = new List<Cliente>();
+            ClienteData ordenData = new ClienteData(connectionString);
+            cliente = ordenData.GetByName("j");
         }
+
     }
 }

@@ -13,11 +13,9 @@ namespace VentasJHJ.Model.Domain
         private String emailCliente;
         private String direccionCliente;
         private String telefonoCliente;
-        List<PosOrden> ordenes;
 
         public Cliente()
         {
-            this.ordenes = new List<PosOrden>();
         }
 
         public Cliente(string nombreCliente, string apellidosCliente, string cedulaCliente, string emailCliente, 
@@ -31,7 +29,9 @@ namespace VentasJHJ.Model.Domain
             this.telefonoCliente = telefonoCliente;
         }
 
-        public Cliente(int idCliente, string nombreCliente, string apellidosCliente, string cedulaCliente, string emailCliente, string direccionCliente, string telefonoCliente)
+        public Cliente(int idCliente, string nombreCliente, string apellidosCliente, 
+            string cedulaCliente, string emailCliente, string direccionCliente, 
+            string telefonoCliente)
         {
             this.idCliente = idCliente;
             this.nombreCliente = nombreCliente;
@@ -49,6 +49,5 @@ namespace VentasJHJ.Model.Domain
         public string EmailCliente { get => emailCliente; set => emailCliente = value; }
         public string DireccionCliente { get => direccionCliente; set => direccionCliente = value; }
         public string TelefonoCliente { get => telefonoCliente; set => telefonoCliente = value; }
-        public List<PosOrden> Ordenes { get => ordenes; set => ordenes = value; }
     }
 }
