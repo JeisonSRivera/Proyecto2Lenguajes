@@ -43,14 +43,14 @@ namespace VentasJHJ.API.Controllers
             clienteBusiness.Editar(cliente);
         }
 
-        [HttpGet("{id}",Name= "Delete")]
+        [HttpPost("{id}")]
         public void Delete(int id)
-        {
+       {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
             clienteBusiness.Eliminar(id);
         }
 
-        [HttpGet("{idCliente}", Name = "GetById")]
+        [HttpGet("{idCliente}", Name ="get")]
         public IEnumerable<Cliente> GetById(int id)
         {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
