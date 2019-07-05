@@ -37,14 +37,14 @@ namespace VentasJHJ.API.Controllers
         }
 
 
-        [HttpPost("{cliente}")]
+        [HttpPut("{cliente}")]
         public void Update(Cliente cliente)
         {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
             clienteBusiness.Editar(cliente);
         }
 
-        [HttpPost("{id}")]
+        [HttpDelete("{id}")]
         public void Delete(int id)
        {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
