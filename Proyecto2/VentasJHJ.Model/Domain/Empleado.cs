@@ -18,6 +18,7 @@ namespace VentasJHJ.Model.Domain
         public Empleado(int idEmpleado, string nombre, string apellidos, string email)
         {
             this.nombre = nombre;
+            this.idEmpleado = idEmpleado;
             this.apellidos = apellidos;
             this.email = email;
             this.ordenes = new List<Orden>();
