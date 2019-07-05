@@ -7,6 +7,7 @@ namespace VentasJHJ.Model.Domain
     public class Empleado
     {
         private string nombre, apellidos,email;
+        private int idEmpleado;
         List<Orden> ordenes;
 
         public Empleado()
@@ -14,7 +15,7 @@ namespace VentasJHJ.Model.Domain
             this.ordenes = new List<Orden>();
         }
 
-        public Empleado(string nombre, string apellidos, string email, List<Orden> ordenes)
+        public Empleado(int idEmpleado, string nombre, string apellidos, string email)
         {
             this.nombre = nombre;
             this.apellidos = apellidos;
@@ -26,5 +27,6 @@ namespace VentasJHJ.Model.Domain
         public string Apeliidos { get => apellidos; set => apellidos = value; }
         public string Email { get => email; set => email = value; }
         public List<Orden> Ordenes { get => ordenes; set => ordenes = value; }
+        public int IdEmpleado { get => idEmpleado; set => idEmpleado = value; }
     }
 }
