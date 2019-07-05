@@ -36,6 +36,7 @@ namespace VentasJHJ.API.Controllers
             clienteBusiness.Insertar(cliente);
         }
 
+
         [HttpPost("{cliente}")]
         public void Update(Cliente cliente)
         {
