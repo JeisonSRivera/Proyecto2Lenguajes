@@ -44,7 +44,7 @@ namespace VentasJHJ.API.Controllers
             clienteBusiness.Editar(cliente);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{delete}")]
         public void Delete(int id)
        {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
