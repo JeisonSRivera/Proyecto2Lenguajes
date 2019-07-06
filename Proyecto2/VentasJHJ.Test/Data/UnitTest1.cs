@@ -133,7 +133,7 @@ namespace VentasJHJ.Test.Data
         {
             List<Cliente> cliente = new List<Cliente>();
             ClienteData ordenData = new ClienteData(connectionString);
-            cliente = ordenData.GetByName("j");
+           // cliente = ordenData.GetByName("j");
         }
 
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,7 @@ namespace VentasJHJ.API.Controllers
 {
     [Produces("application/json")]
     [Route("api/clientes")]
+    [EnableCors("AllowOrigin")]
     public class GeneroController : Controller
     {
         private readonly IConfiguration configuration;
@@ -29,7 +31,7 @@ namespace VentasJHJ.API.Controllers
             return clienteBusiness.GetAll();
         }
 
-        [HttpPost()]
+        [HttpPut]
         public void Insert([FromBody] Cliente cliente)
         {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
@@ -44,7 +46,7 @@ namespace VentasJHJ.API.Controllers
             clienteBusiness.Editar(cliente);
         }
 
-        [HttpDelete("{delete}")]
+        [HttpDelete("{id}")]
         public void Delete(int id)
        {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
