@@ -36,6 +36,7 @@ namespace VentasJHJ.API.Controllers
         {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
             clienteBusiness.Insertar(cliente);
+
         }
 
 
@@ -52,6 +53,8 @@ namespace VentasJHJ.API.Controllers
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
             clienteBusiness.Eliminar(id);
         }
+
+        
 
         [HttpGet("{idCliente}", Name ="get")]
         public IEnumerable<Cliente> GetById(int id)
