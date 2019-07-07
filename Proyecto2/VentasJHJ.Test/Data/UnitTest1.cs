@@ -132,7 +132,7 @@ namespace VentasJHJ.Test.Data
         public void TestFindByName()
         {
             List<Cliente> cliente = new List<Cliente>();
-            ClienteData ordenData = new ClienteData(connectionString);
+            //ClienteData ordenData = new ClienteData(connectionString);
            // cliente = ordenData.GetByName("j");
         }
 

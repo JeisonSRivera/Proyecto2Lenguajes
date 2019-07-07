@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29009.5
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VentasJHJ.API", "VentasJHJ.API\VentasJHJ.API.csproj", "{AD39C255-7A7C-4917-8C35-AC0CFE23FCA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VentasJHJ.API", "VentasJHJ.API\VentasJHJ.API.csproj", "{AD39C255-7A7C-4917-8C35-AC0CFE23FCA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VentasJHJ.Model", "VentasJHJ.Model\VentasJHJ.Model.csproj", "{C870475F-5297-4C9A-AB67-9A146CD041B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VentasJHJ.Model", "VentasJHJ.Model\VentasJHJ.Model.csproj", "{C870475F-5297-4C9A-AB67-9A146CD041B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VentasJHJ.Test", "VentasJHJ.Test\VentasJHJ.Test.csproj", "{6B375E03-BB4B-4AFB-AF33-94F061EE3BDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VentasJHJ.API.2", "VentasJHJ.API.2\VentasJHJ.API.2.csproj", "{3F25AF69-BEB5-42BC-82FD-DFCE866BC64B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6B375E03-BB4B-4AFB-AF33-94F061EE3BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B375E03-BB4B-4AFB-AF33-94F061EE3BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B375E03-BB4B-4AFB-AF33-94F061EE3BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F25AF69-BEB5-42BC-82FD-DFCE866BC64B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F25AF69-BEB5-42BC-82FD-DFCE866BC64B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F25AF69-BEB5-42BC-82FD-DFCE866BC64B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F25AF69-BEB5-42BC-82FD-DFCE866BC64B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
