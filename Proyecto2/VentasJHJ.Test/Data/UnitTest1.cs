@@ -128,13 +128,13 @@ namespace VentasJHJ.Test.Data
         //    ordenData.Insertar(orden);
         //}
 
-        [TestMethod]
-        public void TestFindByName()
-        {
-            List<Cliente> cliente = new List<Cliente>();
-            //ClienteData ordenData = new ClienteData(connectionString);
-           // cliente = ordenData.GetByName("j");
-        }
+        //[TestMethod]
+        //public void TestFindByName()
+        //{
+        //    List<Cliente> cliente = new List<Cliente>();
+        //    ClienteData ordenData = new ClienteData(connectionString);
+        //    cliente = ordenData.GetByName("j");
+        //}
 
     }
 }

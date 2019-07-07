@@ -27,11 +27,19 @@ namespace VentasJHJ.API
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddCors();
-            services.AddCors(c =>
+
+            //services.AddCors(c =>
+            //{
+            //    c.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:3000"));
+            //});
+
+            services.AddCors(o => o.AddPolicy("AllowOrigin", builder =>
             {
-                c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:3000/"));
-            });
-            
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             services.AddMvc();
         }
 
