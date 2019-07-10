@@ -11,21 +11,19 @@ namespace VentasJHJ.Model.Domain
         private String descripcion;
         private int cantidadEnStock;
         private float precio;
-        private Categoria categoria;
-
+        private int idCategoria;
         public Producto()
         {
-            this.Categoria = new Categoria();
         }
 
-        public Producto(int idProducto, string nombreProducto, string descripcion, int cantidadEnStock, float precio, Categoria categoria)
+        public Producto(int idProducto, string nombreProducto, string descripcion, int cantidadEnStock, float precio, int idCategoria)
         {
             this.idProducto = idProducto;
             this.nombreProducto = nombreProducto;
             this.descripcion = descripcion;
             this.cantidadEnStock = cantidadEnStock;
             this.precio = precio;
-            this.categoria = categoria;
+            this.idCategoria = idCategoria;
         }
 
         public int IdProducto { get => idProducto; set => idProducto = value; }
@@ -33,6 +31,6 @@ namespace VentasJHJ.Model.Domain
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public int CantidadEnStock { get => cantidadEnStock; set => cantidadEnStock = value; }
         public float Precio { get => precio; set => precio = value; }
-        public Categoria Categoria { get => categoria; set => categoria = value; }
+        public int IdCategoria { get => idCategoria; set => idCategoria = value; }
     }
 }

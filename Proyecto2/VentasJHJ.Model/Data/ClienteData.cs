@@ -188,5 +188,34 @@ namespace VentasJHJ.Model.Data
             } // foreach
             return dictionary.Values.ToList<Cliente>();
         } // GetAllMovies
+
+        public List<Cliente> GetByName(String nombreCliente)
+        {
+            String sqlSelect = "Select id_cliente,nombre_cliente,apellidos_cliente,cedula_cliente, email_cliente,direccion_cliente, telefono_cliente " +
+                "from Cliente where nombre_cliente like '%" + nombreCliente + "%'";
+
+            SqlDataAdapter daClientes = new SqlDataAdapter(sqlSelect, new SqlConnection(connectionString));
+            DataSet dsCliente = new DataSet();
+            daClientes.Fill(dsCliente, "Cliente");
+
+            Dictionary<Int32, Cliente> dictionary = new Dictionary<Int32, Cliente>();
+            foreach (DataRow row in dsCliente.Tables["Cliente"].Rows)
+            {
+                Int32 id = Int32.Parse(row["id_cliente"].ToString());
+                // if (dictionary.ContainsKey(id) == false)
+                // {
+                Cliente cliente = new Cliente();
+                cliente.IdCliente = id;
+                cliente.NombreCliente = row["nombre_cliente"].ToString();
+                cliente.ApellidosCliente = row["apellidos_cliente"].ToString();
+                cliente.CedulaCliente = row["cedula_cliente"].ToString();
+                cliente.TelefonoCliente = row["telefono_cliente"].ToString();
+                cliente.EmailCliente = row["email_cliente"].ToString();
+                cliente.DireccionCliente = row["direccion_cliente"].ToString();
+                dictionary.Add(id, cliente);
+                // } // if
+            } // foreach
+            return dictionary.Values.ToList<Cliente>();
+        } // GetAllClientes
     }
 }

@@ -33,9 +33,9 @@ namespace VentasJHJ.Model.Business
         {
             return clienteData.GetAll();
         }
-        public List<Cliente> GetById(int id)
+        public List<Cliente> GetByNombre(String nombreCliente)
         {
-            return clienteData.GetById(id);
+            return clienteData.GetByName(nombreCliente);
         }
     }
 }

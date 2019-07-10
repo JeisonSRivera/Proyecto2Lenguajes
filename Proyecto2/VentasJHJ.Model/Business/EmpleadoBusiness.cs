@@ -8,17 +8,17 @@ namespace VentasJHJ.Model.Business
 {
     public class EmpleadoBusiness
     {
-        EmpleadoData categoriaData;
+        EmpleadoData empleadoData;
         String connectionString;
 
         public EmpleadoBusiness(string connectionString)
         {
             this.connectionString = connectionString;
-            this.categoriaData = new EmpleadoData(connectionString);
+            this.empleadoData = new EmpleadoData(connectionString);
         }
         public List<Empleado> GetAll()
         {
-            return categoriaData.GetAll();
+            return empleadoData.GetAll();
         }
     }
 }

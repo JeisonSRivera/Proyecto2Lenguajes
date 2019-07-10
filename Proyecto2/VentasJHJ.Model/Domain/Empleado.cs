@@ -6,13 +6,13 @@ namespace VentasJHJ.Model.Domain
 {
     public class Empleado
     {
-        private string nombre, apellidos,email;
+        private string nombre;
+        private string apellidos;
+        private string email;
         private int idEmpleado;
-        List<Orden> ordenes;
 
         public Empleado()
         {
-            this.ordenes = new List<Orden>();
         }
 
         public Empleado(int idEmpleado, string nombre, string apellidos, string email)
@@ -21,13 +21,11 @@ namespace VentasJHJ.Model.Domain
             this.idEmpleado = idEmpleado;
             this.apellidos = apellidos;
             this.email = email;
-            this.ordenes = new List<Orden>();
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apeliidos { get => apellidos; set => apellidos = value; }
         public string Email { get => email; set => email = value; }
-        public List<Orden> Ordenes { get => ordenes; set => ordenes = value; }
         public int IdEmpleado { get => idEmpleado; set => idEmpleado = value; }
     }
 }

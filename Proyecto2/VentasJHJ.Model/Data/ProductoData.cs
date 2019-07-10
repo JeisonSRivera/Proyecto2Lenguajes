@@ -47,10 +47,9 @@ namespace VentasJHJ.Model.Data
                 cmdProducto.Transaction = transaction;
                 cmdProducto.ExecuteNonQuery();
                 producto.IdProducto = Int32.Parse(cmdProducto.Parameters["id_producto"].Value.ToString());
-                Categoria categoria = producto.Categoria;
 
                 cmdCategoriaProducto.Parameters.Add(new SqlParameter("id_producto", producto.IdProducto));
-                cmdCategoriaProducto.Parameters.Add(new SqlParameter("id_categoria", categoria.IdCategoria));
+                cmdCategoriaProducto.Parameters.Add(new SqlParameter("id_categoria", producto.IdCategoria));
                 cmdCategoriaProducto.ExecuteNonQuery();
                 cmdCategoriaProducto.Parameters.Clear();
                 
@@ -99,8 +98,7 @@ namespace VentasJHJ.Model.Data
                     producto.Descripcion = row["descripcion"].ToString();
                     producto.CantidadEnStock = Int32.Parse(row["cantidad_stock"].ToString());
                     producto.Precio = float.Parse(row["precio"].ToString());
-                    producto.Categoria.IdCategoria = Int32.Parse(row["id_categoria"].ToString());
-                    producto.Categoria.NombreCategoria = row["nombre_categoria"].ToString();
+                    producto.IdCategoria = Int32.Parse(row["id_categoria"].ToString());
                     dictionary.Add(id, producto);
                 } // if
                 int categoriaId = Int32.Parse(row["id_categoria"].ToString());
@@ -109,11 +107,31 @@ namespace VentasJHJ.Model.Data
                     Categoria categoria = new Categoria();
                     categoria.IdCategoria = categoriaId;
                     categoria.NombreCategoria = row["nombre_categoria"].ToString();
-                    producto.Categoria=categoria;
                 }
             } // foreach
             return dictionary.Values.ToList<Producto>();
         } // GetAllMovies
+
+        public List<Producto> GetAll()
+        {
+            String sqlProcedure = "VentasJHJ_ProductoGetAll";
+            SqlConnection connection = new SqlConnection(this.connectionString);
+            SqlDataAdapter daProductos = new SqlDataAdapter();
+            daProductos.SelectCommand = new SqlCommand(sqlProcedure, connection);
+            daProductos.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            DataSet dsProductos = new DataSet();
+            daProductos.Fill(dsProductos, "Producto");
+
+            List<Producto> productos = new List<Producto>();
+            DataRowCollection rows = dsProductos.Tables["Producto"].Rows;
+            foreach (DataRow row in rows)
+            {
+                productos.Add(new Producto(Int32.Parse(row["id_producto"].ToString()), row["nombre_producto"].ToString(),
+                    row["descripcion"].ToString(), Int32.Parse(row["cantidad_stock"].ToString()), Int32.Parse(row["precio"].ToString()),
+                     Int32.Parse(row["id_categoria"].ToString())));
+            }
+            return productos;
+        }
 
     }
 }

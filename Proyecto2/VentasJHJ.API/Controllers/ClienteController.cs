@@ -33,28 +33,21 @@ namespace VentasJHJ.API.Controllers
             return clienteBusiness.GetAll();
         }
 
-        [HttpPost()]
-        public void Insert([FromBody] Cliente cliente)
+        [HttpPost("{cliente}")]
+        public Cliente Post([FromBody]Cliente cliente)
         {
-            clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
-            clienteBusiness.Insertar(cliente);
-
+            ClienteData clienteData =
+              new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
+            return clienteData.Insertar(cliente);
         }
-
 
         [HttpPut("{cliente}")]
-        public void Update(Cliente cliente)
+        public void Put([FromBody]Cliente cliente)
         {
-            clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
-            clienteBusiness.Editar(cliente);
+            ClienteData clienteData =
+               new ClienteData(configuration.GetConnectionString("VideoContext").ToString());
+            clienteData.Editar(cliente);
         }
-
-       // [HttpDelete("{idCliente}", Name ="delete")]
-       // public void Delete(int id)
-       //{
-       //     clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
-       //     clienteBusiness.Eliminar(id);
-       // }
 
         [HttpDelete]
         [Route("delete/{id}")]
@@ -63,9 +56,8 @@ namespace VentasJHJ.API.Controllers
             try
             {
                 var response = new HttpResponseMessage(HttpStatusCode.OK);
+                clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
                 clienteBusiness.Eliminar(id);
-                //    Product.Remove(db.Product.SingleOrDefault(p => p.product_id == id));
-                //db.SaveChanges();
                 return response;
             }
             catch
@@ -74,12 +66,14 @@ namespace VentasJHJ.API.Controllers
             }
         }
 
-        [HttpGet("{idCliente}", Name ="get")]
-        public IEnumerable<Cliente> GetById(int id)
+        [HttpGet("{nombreCliente}", Name ="get")]
+        public IEnumerable<Cliente> GetByNombre(String nombreCliente)
         {
             clienteBusiness = new ClienteBusiness(configuration.GetConnectionString("VideoContext").ToString());
-            return clienteBusiness.GetById(id);
+            return clienteBusiness.GetByNombre(nombreCliente);
         }
+
+
     }
     
 }
